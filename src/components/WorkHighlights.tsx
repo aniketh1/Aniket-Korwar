@@ -4,42 +4,70 @@ const projects = [{
   id: 1,
   title: "COLLAB DEV",
   description: "Real-time collaborative code editor inspired by CodeSandbox/StackBlitz with Monaco Editor and sandboxed previews.",
-  image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-  link: "#",
+  image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
+  link: "https://cloud-based-collborative-code-editor.vercel.app/",
   tech: "NextJS, TailwindCSS, ClerkAuth, AWS, NodeJS, Socket.io",
-  status: "Under Development"
+  status: "Live"
 }, {
   id: 2,
   title: "TECH-SHELF",
   description: "Full-stack blogging platform with Clerk authentication, rich text editor, and analytics dashboard.",
-  image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-  link: "#",
+  image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80",
+  link: "https://github.com/aniketh1/Tech-Shelf",
   tech: "Next.js 13, TypeScript, Tailwind CSS, Prisma, Neon DB, Clerk"
 }, {
   id: 3,
   title: "AMAZON CLONE 2.0",
   description: "E-commerce platform with authentication & Stripe payments, deployed on Firebase with enhanced performance.",
-  image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-  link: "#",
-  tech: "React, Redux, Firebase, Stripe"
+  image: "https://magzoid.com/wp-content/uploads/2025/05/amazon-rebrand-2025_dezeen_2364_col_1-1.webp",
+  link: "https://clone-2676d.web.app/",
+  tech: "React, Redux, Firebase, Stripe",
+  status: "Live"
 }, {
   id: 4,
   title: "CLIMAVIEW",
   description: "Weather app with real-time updates, interactive maps, geolocation integration and responsive UI.",
-  image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=800&q=80",
-  link: "#",
+  image: "https://www.bytewebster.com/javascriptprojects/uploads/images/weather-app-using-javascript1.png",
+  link: "https://github.com/aniketh1/ClimaView-App",
   tech: "React.js, Weather API, Geolocation, TailwindCSS"
 }, {
   id: 5,
   title: "COFFEE-HUB",
   description: "Android coffee shop app with order management, Firebase authentication, and Material UI design.",
-  image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
-  link: "#",
+  image: "https://www.figma.com/community/resource/d26899aa-2d4b-4eb8-9377-c1ede0093d4e/thumbnail",
+  link: "https://github.com/aniketh1/Coffee-Hub",
   tech: "Kotlin, Android Studio, Firebase, Material Design"
 }];
 const WorkHighlights = () => {
-  return <section className="py-20 bg-secondary-dark">
-      <div className="container px-4 mx-auto">
+  return <section className="py-20 bg-secondary-dark relative overflow-hidden" id="work">
+      {/* Background Geometric Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute top-20 left-20 w-32 h-32 border border-white/10"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div 
+          className="absolute bottom-32 right-32 w-24 h-24 bg-white/5 rounded-full"
+          animate={{ 
+            scale: [1, 1.3, 1],
+            opacity: [0.1, 0.3, 0.1]
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-1/3 right-10 w-16 h-16 bg-primary/20"
+          style={{
+            clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
+          }}
+          animate={{ 
+            rotate: [0, 120, 240, 360],
+            x: [0, 30, 0, -30, 0]
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+      <div className="container px-4 mx-auto relative z-10">
         <motion.div initial={{
         opacity: 0,
         y: 20

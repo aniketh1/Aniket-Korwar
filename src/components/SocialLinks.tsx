@@ -1,32 +1,32 @@
 
-import { Github, Linkedin, Code, User } from "lucide-react";
+import { Github, Linkedin, Code, Mail } from "lucide-react";
 
 const socialLinks = [
   {
+    name: "Email",
+    icon: Mail,
+    url: "mailto:aniketkorwa@gmail.com",
+  },
+  {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com/in/aniketkorwar",
+    url: "https://www.linkedin.com/in/aniket-korwar-064550203/",
   },
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com/aniketkorwar",
+    url: "https://github.com/aniketh1",
   },
   {
     name: "LeetCode", 
     icon: Code,
-    url: "https://leetcode.com/aniketkorwar",
-  },
-  {
-    name: "Portfolio",
-    icon: User,
-    url: "#",
+    url: "https://leetcode.com/u/aniketkorwa/",
   },
 ];
 
 const SocialLinks = () => {
   return (
-    <section className="py-16 bg-secondary">
+    <section className="py-16 bg-secondary" id="social">
       <div className="container px-4 mx-auto text-center">
         <h2 className="text-2xl font-bold text-secondary-dark mb-8 uppercase">Connect With Me</h2>
         <div className="flex justify-center gap-6">

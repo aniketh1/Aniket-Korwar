@@ -52,8 +52,35 @@ const About = () => {
   };
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container px-4 mx-auto">
+    <section className="py-20 bg-white relative overflow-hidden" id="about">
+      {/* Subtle Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div 
+          className="absolute top-10 right-10 w-20 h-20 border-2 border-primary/10"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        />
+        <motion.div 
+          className="absolute bottom-20 left-10 w-16 h-16 bg-secondary/5 rounded-full"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div 
+          className="absolute top-1/2 right-5 w-12 h-12 bg-primary/5"
+          style={{
+            clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'
+          }}
+          animate={{ 
+            rotate: [0, 90, 180, 270, 360],
+            y: [0, -20, 0, 20, 0]
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+      <div className="container px-4 mx-auto relative z-10">
         {/* Education Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,6 +119,7 @@ const About = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-16"
+          data-section="experience"
         >
           <h2 className="text-3xl font-bold text-secondary-dark mb-8 uppercase flex items-center">
             <Briefcase className="mr-3 text-primary" size={32} />
@@ -125,11 +153,60 @@ const About = () => {
           </div>
         </motion.div>
 
+        {/* Resume Download Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-16 text-center"
+        >
+          <motion.a
+            href="https://drive.google.com/file/d/1LFxt7QUAm5zHDnkOMNwQmZows-iqzhI5/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold text-lg uppercase tracking-wider border-2 border-primary transition-all duration-300 hover:bg-transparent hover:text-primary group"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 8px 25px rgba(34, 197, 94, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div
+              animate={{ 
+                y: [0, -2, 0]
+              }}
+              transition={{ 
+                duration: 1.5, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            >
+              <svg 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                className="group-hover:animate-bounce"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7,10 12,15 17,10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+            </motion.div>
+            <span>Download Full Resume</span>
+          </motion.a>
+        </motion.div>
+
         {/* Skills Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
+          data-section="skills"
         >
           <h2 className="text-3xl font-bold text-secondary-dark mb-8 uppercase flex items-center">
             <Code className="mr-3 text-primary" size={32} />

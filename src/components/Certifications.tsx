@@ -6,25 +6,25 @@ const certifications = [
     id: 1,
     title: "The Complete Full-Stack Web Development Bootcamp",
     provider: "Udemy",
-    link: "#"
+    link: "https://www.udemy.com/certificate/UC-d62c3de8-5805-4bac-98cf-fc434d532ee8/"
   },
   {
     id: 2,
     title: "Java (Basics)",
     provider: "HackerRank", 
-    link: "#"
+    link: "https://www.hackerrank.com/certificates/4749e5b31c4a"
   },
   {
     id: 3,
     title: "Python Programming",
     provider: "GreatLearning Academy",
-    link: "#"
+    link: "https://www.mygreatlearning.com/certificate/GJLXPYIQ"
   }
 ];
 
 const Certifications = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white" id="certifications">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

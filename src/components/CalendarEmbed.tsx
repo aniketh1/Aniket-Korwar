@@ -16,15 +16,35 @@ const CalendarEmbed = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({
-      ...formData,
-      date: date ? format(date, "PPP") : null
-    });
-    // Here you would typically send this data to your backend
+    
+    if (!date) return;
+    
+    const formattedDate = format(date, "PPP");
+    const subject = `Meeting Request: ${formData.subject}`;
+    const body = `Hello Aniket,
+
+I would like to schedule a meeting with you.
+
+Details:
+- Name: ${formData.name}
+- Email: ${formData.email}
+- Preferred Date: ${formattedDate}
+- Subject: ${formData.subject}
+
+Looking forward to connecting with you!
+
+Best regards,
+${formData.name}`;
+
+    // Create mailto link with pre-filled information
+    const mailtoLink = `mailto:aniketkorwa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
   };
 
   return (
-    <section className="py-20 bg-white border-t-4 border-primary">
+    <section className="py-20 bg-white border-t-4 border-primary" id="calendar">
       <div className="container px-4 mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -104,7 +124,7 @@ const CalendarEmbed = () => {
                 className="mt-8 px-8 py-3 bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed uppercase"
                 disabled={!date || !formData.name || !formData.email || !formData.subject}
               >
-                Schedule Meeting
+                Send Meeting Request
               </button>
             </form>
           </div>

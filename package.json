@@ -8,7 +8,10 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:s3": "npm run build && echo 'Build complete! Run deploy-s3.bat (Windows) or ./deploy-s3.sh (Linux/Mac) to deploy to AWS S3'",
+    "deploy:check": "aws sts get-caller-identity && echo 'AWS CLI is configured correctly!'",
+    "build:analyze": "npm run build && echo 'Build complete! Check dist/ folder for deployment files'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
