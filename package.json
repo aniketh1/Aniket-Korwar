@@ -1,7 +1,9 @@
 {
-  "name": "vite_react_shadcn_ts",
+  "name": "aniket-korwar-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Interactive portfolio website of Aniket Korwar - Software Development Engineer",
+  "author": "Aniket Korwar",
   "type": "module",
   "scripts": {
     "dev": "vite",
