@@ -1,21 +1,26 @@
 
-import { Twitter, Linkedin, Youtube } from "lucide-react";
+import { Github, Linkedin, Code, User } from "lucide-react";
 
 const socialLinks = [
   {
-    name: "Twitter",
-    icon: Twitter,
-    url: "https://twitter.com",
-  },
-  {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com",
+    url: "https://linkedin.com/in/aniketkorwar",
   },
   {
-    name: "YouTube",
-    icon: Youtube,
-    url: "https://youtube.com",
+    name: "GitHub",
+    icon: Github,
+    url: "https://github.com/aniketkorwar",
+  },
+  {
+    name: "LeetCode", 
+    icon: Code,
+    url: "https://leetcode.com/aniketkorwar",
+  },
+  {
+    name: "Portfolio",
+    icon: User,
+    url: "#",
   },
 ];
 

@@ -2,22 +2,40 @@ import { motion } from "framer-motion";
 import { ExternalLink, ArrowRight } from "lucide-react";
 const projects = [{
   id: 1,
-  title: "Design System Creation",
-  description: "A comprehensive design system for a Fortune 500 company, focusing on accessibility and consistency.",
-  image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-  link: "#"
+  title: "COLLAB DEV",
+  description: "Real-time collaborative code editor inspired by CodeSandbox/StackBlitz with Monaco Editor and sandboxed previews.",
+  image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
+  link: "#",
+  tech: "NextJS, TailwindCSS, ClerkAuth, AWS, NodeJS, Socket.io",
+  status: "Under Development"
 }, {
   id: 2,
-  title: "E-commerce Platform",
-  description: "End-to-end development of a modern e-commerce platform with seamless user experience.",
-  image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
-  link: "#"
+  title: "TECH-SHELF",
+  description: "Full-stack blogging platform with Clerk authentication, rich text editor, and analytics dashboard.",
+  image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
+  link: "#",
+  tech: "Next.js 13, TypeScript, Tailwind CSS, Prisma, Neon DB, Clerk"
 }, {
   id: 3,
-  title: "Mobile App Design",
-  description: "Award-winning mobile application design for a healthcare startup.",
-  image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80",
-  link: "#"
+  title: "AMAZON CLONE 2.0",
+  description: "E-commerce platform with authentication & Stripe payments, deployed on Firebase with enhanced performance.",
+  image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+  link: "#",
+  tech: "React, Redux, Firebase, Stripe"
+}, {
+  id: 4,
+  title: "CLIMAVIEW",
+  description: "Weather app with real-time updates, interactive maps, geolocation integration and responsive UI.",
+  image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=800&q=80",
+  link: "#",
+  tech: "React.js, Weather API, Geolocation, TailwindCSS"
+}, {
+  id: 5,
+  title: "COFFEE-HUB",
+  description: "Android coffee shop app with order management, Firebase authentication, and Material UI design.",
+  image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+  link: "#",
+  tech: "Kotlin, Android Studio, Firebase, Material Design"
 }];
 const WorkHighlights = () => {
   return <section className="py-20 bg-secondary-dark">
@@ -31,13 +49,13 @@ const WorkHighlights = () => {
       }} transition={{
         duration: 0.6
       }} className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-white mb-4 uppercase">FEATURED WORK</h2>
+          <h2 className="text-3xl font-bold text-white mb-4 uppercase">PROJECTS</h2>
           <p className="text-white/80 max-w-2xl mx-auto">
-            A showcase of my recent projects and collaborations, demonstrating my approach to design and problem-solving.
+            A showcase of my development projects, demonstrating expertise in full-stack development and modern technologies.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => <motion.div key={project.id} initial={{
           opacity: 0,
           y: 20
@@ -56,12 +74,23 @@ const WorkHighlights = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-secondary-dark mb-2 uppercase group-hover:text-primary">
-                    {project.title}
-                  </h3>
-                  <p className="text-secondary-dark/80 mb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xl font-bold text-secondary-dark uppercase group-hover:text-primary">
+                      {project.title}
+                    </h3>
+                    {project.status && (
+                      <span className="px-2 py-1 bg-secondary text-secondary-dark text-xs font-medium">
+                        {project.status}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-secondary-dark/80 mb-3">
                     {project.description}
                   </p>
+                  <div className="mb-4">
+                    <p className="text-xs text-secondary-dark/60 uppercase font-medium mb-1">Tech Stack:</p>
+                    <p className="text-sm text-secondary-dark/70">{project.tech}</p>
+                  </div>
                   <div className="flex items-center text-primary font-medium group-hover:translate-x-1 transition-transform">
                     View Project
                     <ArrowRight size={18} className="ml-1" />

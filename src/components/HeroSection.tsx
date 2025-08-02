@@ -17,14 +17,19 @@ const HeroSection = () => {
           className="max-w-3xl mx-auto"
         >
           <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider text-secondary-dark rounded-none bg-secondary">
-            Welcome to my blog
+            Software Development Engineer
           </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight uppercase">
-            Exploring Design, Technology, and Innovation
+            Aniket Korwar
           </h1>
           <p className="text-lg md:text-xl text-white/80 mb-8">
-            Join me on a journey through the intersection of design and technology, where simplicity meets innovation.
+            Full Stack Developer passionate about building scalable web applications and innovative solutions.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 text-white/70">
+            <span>📧 aniketkorwa@gmail.com</span>
+            <span>📱 +91 8317305659</span>
+            <span>📍 Bangalore, India</span>
+          </div>
         </motion.div>
       </div>
     </section>
