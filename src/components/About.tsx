@@ -52,7 +52,7 @@ const About = () => {
   };
 
   return (
-    <section className="py-20 bg-white relative overflow-hidden" id="about">
+    <section className="py-12 md:py-20 bg-white relative overflow-hidden" id="about">
       {/* Subtle Background Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
@@ -88,8 +88,8 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <h2 className="text-3xl font-bold text-secondary-dark mb-8 uppercase flex items-center">
-            <GraduationCap className="mr-3 text-primary" size={32} />
+          <h2 className="text-2xl md:text-3xl font-bold text-secondary-dark mb-6 md:mb-8 uppercase flex items-center">
+            <GraduationCap className="mr-2 md:mr-3 text-primary" size={24} />
             Education
           </h2>
           <div className="space-y-6">

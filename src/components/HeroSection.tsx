@@ -1,11 +1,99 @@
 
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { Menu, X, User, Code, Briefcase, Award, Calendar, Github } from "lucide-react";
 
 const HeroSection = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navigationItems = [
+    { id: 'about', label: 'About Me', icon: User },
+    { id: 'work', label: 'Projects', icon: Code },
+    { id: 'certifications', label: 'Certifications', icon: Award },
+    { id: 'calendar', label: 'Contact', icon: Calendar },
+    { id: 'social', label: 'Social Links', icon: Github },
+  ];
+
+  const handleNavClick = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
+  };
+
   return (
-    <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-secondary-dark">
-      {/* Interactive Navigation Shapes */}
-      <div className="absolute inset-0 overflow-hidden z-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-secondary-dark">
+      {/* Mobile Menu Button - Visible only on mobile */}
+      <button
+        onClick={() => setIsMobileMenuOpen(true)}
+        className="md:hidden fixed top-4 left-4 z-50 p-3 bg-primary text-white rounded-lg shadow-lg hover:bg-primary/80 transition-all"
+        aria-label="Open navigation menu"
+      >
+        <Menu size={24} />
+      </button>
+
+      {/* Mobile Sidebar Navigation */}
+      <motion.div
+        initial={{ x: '-100%' }}
+        animate={{ x: isMobileMenuOpen ? 0 : '-100%' }}
+        transition={{ type: 'tween', duration: 0.3 }}
+        className="md:hidden fixed inset-y-0 left-0 z-50 w-80 bg-secondary-dark/95 backdrop-blur-md shadow-2xl"
+      >
+        {/* Sidebar Header */}
+        <div className="flex items-center justify-between p-6 border-b border-white/10">
+          <h2 className="text-xl font-bold text-white">Navigation</h2>
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2 text-white hover:bg-white/10 rounded-lg transition-all"
+            aria-label="Close navigation menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+
+        {/* Navigation Items */}
+        <nav className="p-6">
+          <ul className="space-y-4">
+            {navigationItems.map((item) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => handleNavClick(item.id)}
+                  className="w-full flex items-center space-x-4 p-4 text-white hover:bg-primary/20 rounded-lg transition-all group"
+                >
+                  <item.icon size={20} className="text-primary group-hover:text-white" />
+                  <span className="text-lg font-medium">{item.label}</span>
+                </button>
+              </li>
+            ))}
+            <li>
+              <button
+                onClick={() => {
+                  window.open('https://drive.google.com/file/d/1LFxt7QUAm5zHDnkOMNwQmZows-iqzhI5/view?usp=sharing', '_blank');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center space-x-4 p-4 text-white hover:bg-secondary/20 rounded-lg transition-all group border border-secondary"
+              >
+                <svg className="w-5 h-5 text-secondary group-hover:text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v3.586l-1.293-1.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V8z" clipRule="evenodd" />
+                </svg>
+                <span className="text-lg font-medium">Download Resume</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </motion.div>
+
+      {/* Mobile Overlay */}
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="md:hidden fixed inset-0 bg-black/50 z-40"
+        />
+      )}
+
+      {/* Desktop Interactive Navigation Shapes - Hidden on mobile */}
+      <div className="hidden md:block absolute inset-0 overflow-hidden z-20">
         {/* About Section - Rotating Square */}
         <button 
           onClick={(e) => {
@@ -17,7 +105,7 @@ const HeroSection = () => {
               aboutSection.scrollIntoView({ behavior: 'smooth' });
             }
           }}
-          className="absolute top-20 left-20 w-40 h-40 group"
+          className="absolute top-16 left-16 lg:top-20 lg:left-20 w-32 h-32 lg:w-40 lg:h-40 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -36,7 +124,7 @@ const HeroSection = () => {
             }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="text-white font-bold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-white font-bold text-sm lg:text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               ABOUT
             </span>
           </motion.div>
@@ -54,7 +142,7 @@ const HeroSection = () => {
               skillsSection?.scrollIntoView({ behavior: 'smooth' });
             }, 500);
           }}
-          className="absolute top-32 right-32 w-24 h-24 group"
+          className="absolute top-24 right-16 lg:top-32 lg:right-32 w-20 h-20 lg:w-24 lg:h-24 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -66,8 +154,8 @@ const HeroSection = () => {
           <motion.div
             className="w-full h-full bg-secondary rounded-full hover:bg-secondary/80 transition-all duration-300 flex items-center justify-center"
             animate={{ 
-              x: [0, 100, 0, -100, 0],
-              y: [0, -50, 0, 50, 0]
+              x: [0, 50, 0, -50, 0],
+              y: [0, -25, 0, 25, 0]
             }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ 
@@ -76,7 +164,7 @@ const HeroSection = () => {
             }}
             whileTap={{ scale: 0.9 }}
           >
-            <span className="text-white font-bold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-white font-bold text-xs lg:text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               SKILLS
             </span>
           </motion.div>
@@ -94,7 +182,7 @@ const HeroSection = () => {
               experienceSection?.scrollIntoView({ behavior: 'smooth' });
             }, 500);
           }}
-          className="absolute bottom-20 right-20 w-60 h-60 group"
+          className="absolute bottom-16 right-16 lg:bottom-20 lg:right-20 w-40 h-40 lg:w-60 lg:h-60 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -113,7 +201,7 @@ const HeroSection = () => {
             }}
             whileTap={{ scale: 0.98 }}
           >
-            <span className="text-white font-bold text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-white font-bold text-sm lg:text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               EXPERIENCE
             </span>
           </motion.div>
@@ -127,7 +215,7 @@ const HeroSection = () => {
             console.log('Projects button clicked!');
             document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="absolute top-40 right-40 group"
+          className="absolute top-32 right-24 lg:top-40 lg:right-40 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -138,8 +226,8 @@ const HeroSection = () => {
         >
           <motion.div
             animate={{ 
-              y: [0, -30, 0],
-              rotate: [0, 10, -10, 0]
+              y: [0, -15, 0],
+              rotate: [0, 5, -5, 0]
             }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ 
@@ -151,12 +239,12 @@ const HeroSection = () => {
             <div 
               className="w-0 h-0 border-l-transparent border-r-transparent border-b-primary/40 group-hover:border-b-primary/80 transition-colors duration-300"
               style={{
-                borderLeftWidth: '32px',
-                borderRightWidth: '32px', 
-                borderBottomWidth: '56px'
+                borderLeftWidth: '20px',
+                borderRightWidth: '20px', 
+                borderBottomWidth: '35px'
               }}
             />
-            <span className="absolute top-8 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+            <span className="absolute top-6 left-1/2 transform -translate-x-1/2 text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
               PROJECTS
             </span>
           </motion.div>
@@ -170,7 +258,7 @@ const HeroSection = () => {
             console.log('Certifications button clicked!');
             document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="absolute bottom-40 left-40 w-16 h-16 group"
+          className="absolute bottom-32 left-16 lg:bottom-40 lg:left-40 w-12 h-12 lg:w-16 lg:h-16 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -203,7 +291,7 @@ const HeroSection = () => {
             console.log('Contact button clicked!');
             document.getElementById('calendar')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="absolute bottom-32 left-1/4 w-20 h-20 group"
+          className="absolute bottom-24 left-1/4 lg:bottom-32 lg:left-1/4 w-16 h-16 lg:w-20 lg:h-20 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -215,7 +303,7 @@ const HeroSection = () => {
           <motion.div
             className="w-full h-full bg-secondary/50 rounded-full hover:bg-secondary/80 transition-all duration-300 flex items-center justify-center"
             animate={{ 
-              y: [0, -80, 0],
+              y: [0, -40, 0],
               scale: [1, 0.8, 1]
             }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -239,7 +327,7 @@ const HeroSection = () => {
             console.log('Social button clicked!');
             document.getElementById('social')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="absolute top-1/4 left-1/3 w-12 h-12 group"
+          className="absolute top-1/4 left-1/4 lg:left-1/3 w-10 h-10 lg:w-12 lg:h-12 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -275,7 +363,7 @@ const HeroSection = () => {
             console.log('Resume button clicked!');
             window.open('https://drive.google.com/file/d/1LFxt7QUAm5zHDnkOMNwQmZows-iqzhI5/view?usp=sharing', '_blank');
           }}
-          className="absolute top-1/2 left-10 w-8 h-32 group"
+          className="absolute top-1/2 left-4 lg:left-10 w-6 h-24 lg:w-8 lg:h-32 group"
           style={{ 
             cursor: 'pointer', 
             pointerEvents: 'all', 
@@ -287,8 +375,8 @@ const HeroSection = () => {
           <motion.div
             className="w-full h-full bg-secondary/40 hover:bg-secondary/70 transition-all duration-300"
             animate={{ 
-              x: [0, 200, 0],
-              rotate: [0, 90, 0]
+              x: [0, 100, 0],
+              rotate: [0, 45, 0]
             }}
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             whileHover={{ 
@@ -297,7 +385,7 @@ const HeroSection = () => {
             }}
             whileTap={{ scale: 0.9 }}
           />
-          <span className="absolute -right-16 top-1/2 transform -translate-y-1/2 text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap rotate-90">
+          <span className="absolute -right-12 lg:-right-16 top-1/2 transform -translate-y-1/2 text-white font-bold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap rotate-90">
             RESUME
           </span>
         </button>

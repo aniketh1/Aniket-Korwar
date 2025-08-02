@@ -24,7 +24,7 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section className="py-20 bg-white" id="certifications">
+    <section className="py-12 md:py-20 bg-white" id="certifications">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,8 +32,8 @@ const Certifications = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-secondary-dark mb-4 uppercase flex items-center justify-center">
-            <Award className="mr-3 text-primary" size={32} />
+          <h2 className="text-2xl md:text-3xl font-bold text-secondary-dark mb-4 uppercase flex items-center justify-center">
+            <Award className="mr-2 md:mr-3 text-primary" size={24} />
             Certifications
           </h2>
           <p className="text-secondary-dark/80 max-w-2xl mx-auto">

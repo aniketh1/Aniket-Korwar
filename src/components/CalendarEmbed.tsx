@@ -44,14 +44,14 @@ ${formData.name}`;
   };
 
   return (
-    <section className="py-20 bg-white border-t-4 border-primary" id="calendar">
+    <section className="py-12 md:py-20 bg-white border-t-4 border-primary" id="calendar">
       <div className="container px-4 mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-secondary-dark mb-4 uppercase">Let's Connect</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-secondary-dark mb-4 uppercase">Let's Connect</h2>
           <p className="text-secondary-dark/80 mb-8 max-w-2xl mx-auto">
             Schedule a call with me to discuss your project, share ideas, or just have a friendly chat about design and technology.
           </p>

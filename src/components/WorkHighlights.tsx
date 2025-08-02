@@ -39,7 +39,7 @@ const projects = [{
   tech: "Kotlin, Android Studio, Firebase, Material Design"
 }];
 const WorkHighlights = () => {
-  return <section className="py-20 bg-secondary-dark relative overflow-hidden" id="work">
+  return <section className="py-12 md:py-20 bg-secondary-dark relative overflow-hidden" id="work">
       {/* Background Geometric Shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
